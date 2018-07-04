@@ -2,11 +2,11 @@ package com.logan.util;
 
 /**
  * This is a util class.
+ * 
  * @author Logan Ma
  *
  */
 public class Utils {
-	
 	
 	/**
 	 *  This is a print method
