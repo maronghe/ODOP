@@ -4,4 +4,4 @@
 *.prefs
 org.eclipse.*.xml
 
-
+ODOP/bin/
