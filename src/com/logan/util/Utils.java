@@ -2,7 +2,7 @@ package com.logan.util;
 
 /**
  * This is a util class.
- * @author RongHeMaRongHe
+ * @author Logan Ma
  *
  */
 public class Utils {
