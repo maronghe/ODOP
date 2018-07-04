@@ -9,7 +9,7 @@ public class Utils {
 	
 	
 	/**
-	 * print method
+	 *  This is a print method
 	 * @param obj
 	 */
 	public static void Print(Object obj) {
