@@ -1,23 +1,23 @@
 package com.logan.classloader;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 /**
- * This is a self defined file class loader
+ * This class is based on network to load a class.
  * @author RongHeMaRongHe
  *
  */
-public class FileClassLoader extends ClassLoader{
+public class NetClassLoader extends ClassLoader{
 
-	private String filePath;
 
-	public FileClassLoader(String filePath) {
-		this.filePath = filePath;
+	private String url;
+
+	public NetClassLoader(String url) {
+		this.url = url;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -29,20 +29,6 @@ public class FileClassLoader extends ClassLoader{
 		if(clazz != null)
 			return clazz;
 
-	// Ë«Ç×Î¯ÍÐ»úÖÆ
-//		try {
-//			ClassLoader parent = this.getParent();
-////			clazz = parent.loadClass(className);
-//			if(clazz != null) {
-//				return clazz;
-//			}
-//		} catch (ClassNotFoundException e) {
-//			try {
-//				throw new ClassNotFoundException("Parent can't load class.");
-//			} catch (ClassNotFoundException e1) {
-//				e1.printStackTrace();
-//			}
-//		}
 		
 		byte[] bytes = loadByMyself(className);
 		
@@ -59,10 +45,11 @@ public class FileClassLoader extends ClassLoader{
 		
 		InputStream is = null;
 		ByteArrayOutputStream abos = new ByteArrayOutputStream();
-		String calssFilePath = filePath + "/" + className.replace('.', '/') + ".class";
+		String calssPath = url + "/" + className.replace('.', '/') + ".class";
 		byte[] buffer = new byte[1024];
 		try {
-			is = new FileInputStream(new File(calssFilePath));
+			// different method to get stream.
+			is = new URL(calssPath).openStream();
 			int readLength = 0;
 			while ((readLength = is.read(buffer) ) != -1) {
 				abos.write(buffer,0,readLength);
@@ -92,6 +79,7 @@ public class FileClassLoader extends ClassLoader{
 		
 		return null;
 	}
+
 
 
 }
