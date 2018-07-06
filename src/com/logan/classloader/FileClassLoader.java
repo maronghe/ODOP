@@ -29,7 +29,8 @@ public class FileClassLoader extends ClassLoader{
 		if(clazz != null)
 			return clazz;
 
-	// 双亲委托机制
+	// 父亲委托机制
+		
 //		try {
 //			ClassLoader parent = this.getParent();
 ////			clazz = parent.loadClass(className);
