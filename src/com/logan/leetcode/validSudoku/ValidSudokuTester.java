@@ -61,35 +61,35 @@ public class ValidSudokuTester {
 	public static boolean isValidSudoku(char[][] board) {
 
 		// all landscape
-		Set<Character> hengSet = new HashSet<Character>();
+		Set<Character> landscapeSet = new HashSet<Character>();
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				char c = board[i][j];
 				if (c == '.') {
 					continue;
 				}
-				if (hengSet.contains(c)) {
+				if (landscapeSet.contains(c)) {
 					return false;
 				}
-				hengSet.add(c);
+				landscapeSet.add(c);
 			}
-			hengSet.clear();
+			landscapeSet.clear();
 		}
 
 		// all portrait
-		Set<Character> shuMap = new HashSet<Character>();
+		Set<Character> portraitMap = new HashSet<Character>();
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				char c = board[j][i];
 				if (c == '.') {
 					continue;
 				}
-				if (shuMap.contains(c)) {
+				if (portraitMap.contains(c)) {
 					return false;
 				}
-				shuMap.add(c);
+				portraitMap.add(c);
 			}
-			shuMap.clear();
+			portraitMap.clear();
 		}
 
 		//  all 3*3
